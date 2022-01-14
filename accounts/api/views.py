@@ -1,8 +1,8 @@
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
 from rest_framework import viewsets
-from accounts.api.serializers import LoginSerializer, UserSerializer
-from accounts.models import User
+from accounts.api.serializers import LoginSerializer, UserSerializer, ProfileSerializer
+from accounts.models import Profile, User
 from django.contrib.auth import authenticate
 
 
@@ -23,4 +23,8 @@ class LoginView(GenericAPIView):
 class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     queryset = User.objects.all()
+
+class ProfileViewSet(viewsets.ModelViewSet):
+    serializer_class = ProfileSerializer
+    queryset = Profile.objects.all()
             

@@ -118,7 +118,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    Path.cwd().joinpath(BASE_DIR).joinpath('memories/assets')
+]
+STATIC_ROOT = Path.cwd().joinpath(BASE_DIR).joinpath('assets')
 
+# Media Files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = Path.cwd().joinpath(BASE_DIR).joinpath('media')
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
