@@ -1,6 +1,8 @@
 from rest_framework.generics import GenericAPIView
 from rest_framework.response import Response
-from accounts.api.serializers import LoginSerializer
+from rest_framework import viewsets
+from accounts.api.serializers import LoginSerializer, UserSerializer
+from accounts.models import User
 from django.contrib.auth import authenticate
 
 
@@ -17,4 +19,8 @@ class LoginView(GenericAPIView):
                 data['token'] = f'{user.auth_token}'
                 data['message'] = 'Login safely'
             return Response(data)
+
+class UserViewSet(viewsets.ModelViewSet):
+    serializer_class = UserSerializer
+    queryset = User.objects.all()
             
