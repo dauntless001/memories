@@ -1,4 +1,6 @@
 from django.db import models 
+from django.utils.crypto import get_random_string
+import random
 
 class TimeBasedModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
@@ -13,3 +15,7 @@ class UserBasedModel(models.Model):
     
     class Meta:
         abstract = True
+
+
+def gen_slug():
+    return get_random_string(length=random.randint(8, 11))
