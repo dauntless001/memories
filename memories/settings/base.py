@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # locals
     'accounts',
+    'like',
     'post',
 
     #3rd Party

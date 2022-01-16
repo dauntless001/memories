@@ -10,7 +10,11 @@ class PostFileSerializer(serializers.ModelSerializer):
 class PostSerializer(serializers.ModelSerializer):
     slug = serializers.SlugField(read_only=True)
     files = PostFileSerializer(many=True, read_only=True)
+    likes = serializers.SerializerMethodField(read_only=True)
     class Meta:
         model = Post
         fields = '__all__'
+
+    def get_likes(self, obj):
+        return obj.like_set.count()
     
