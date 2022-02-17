@@ -18,3 +18,6 @@ class PostSerializer(serializers.ModelSerializer):
     def get_likes(self, obj):
         return obj.like_set.count()
     
+    def get_files(self, obj):
+        return obj.files.all()
+    
